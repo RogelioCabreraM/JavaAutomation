@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+
+    tools{
+        maven 'M3'
+    }
+
+    stages{
+        stage('Descargar Código'){
+            steps{
+                checkout scm
+            }
+        }
+        stage('Ejecutar Pruebas'){
+            steps{
+                sh 'mvn clean test'
+            }
+        }
+    }
+}
